@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#4b101b" />
+  
+  <title>Gudla's Marriage Invitation</title>
+  <meta name="description" content="A royal South Indian wedding invitation from Gudla's family." />
+
+  <!-- Editorial serif headings with a clean, highly readable sans-serif. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-bg"></div><div class="mandala"></div>
+  <div class="progress-top" role="progressbar" aria-label="Invitation progress" aria-valuemin="1" aria-valuemax="5" aria-valuenow="1"><span id="globalProgress"></span></div>
+  <div id="dustLayer" aria-hidden="true"></div>
+
+  <!-- Ambient instrumental audio: replace the source with a licensed Shehnai/Nadaswaram/Veena MP3. -->
+  <audio id="weddingMusic" loop preload="none">
+    <source src="YOUR-LICENSED-INSTRUMENTAL-MUSIC.mp3" type="audio/mpeg">
+  </audio>
+
+  <main class="frame" aria-label="Gudla's marriage invitation">
+    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+
+    <!-- PAGE 1: Welcome / envelope seal -->
+    <section class="screen active" id="page1" aria-label="Welcome" aria-hidden="false" tabindex="-1">
+      <div class="screen-inner max-w-3xl">
+        <div class="paper welcome-paper px-7 py-12 sm:px-14 sm:py-14 text-center">
+          <div class="emblem" aria-hidden="true">ॐ</div>
+          <p class="eyebrow mb-3">॥ श्री गणेशाय नमः ॥</p>
+          <p class="ornament text-sm mb-5">✦ ❖ ✦ ❖ ✦</p>
+          <figure class="welcome-photo arch">
+            <img src="images/couple-cover.jpg" alt="Gudla Vasavi and Golla Ramakrishna beneath a wedding mandap" width="640" height="349" fetchpriority="high" decoding="async">
+            <figcaption>Gudla Vasavi <span aria-hidden="true">&amp;</span> Golla Ramakrishna</figcaption>
+          </figure>
+          <h1 class="serif text-2xl sm:text-4xl leading-relaxed text-[#5A1710] mb-4">Hello! You have an invitation to <span class="gold-text">Gudla's Marriage</span></h1>
+          <p class="muted text-sm sm:text-base max-w-xl mx-auto leading-7 mb-9">With hearts full of joy and gratitude, Gudla's family warmly invites you to celebrate a beautiful beginning.</p>
+          <button id="openInvitation" class="seal mx-auto" type="button" aria-label="Tap to open invitation">
+            <span class="text-3xl mb-1">❀</span>
+            <span class="text-[10px] tracking-[.16em] uppercase font-semibold">Tap to Open</span>
+            <span class="text-[9px] tracking-[.2em] uppercase mt-1">Invitation</span>
+          </button>
+          <p class="text-[10px] tracking-[.2em] uppercase text-[#9A762C] mt-9">A celebration of love • tradition • togetherness</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 2: Bride. Replace the placeholder with <img src="images/bride.jpg" alt="Bride portrait"> -->
+    <section class="screen" id="page2" aria-label="The bride" aria-hidden="true" inert tabindex="-1">
+      <div class="screen-inner story-layout grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+        <div class="max-w-sm w-full mx-auto md:order-2">
+          <div class="arch">
+            <div class="portrait" id="bridePortrait">
+              <div class="portrait-placeholder"><span class="emoji">👰🏻</span><small>Bride portrait unavailable</small></div>
+              <img src="images/bride.png" alt="Bride Gudla Vasavi in traditional wedding attire" loading="eager" decoding="async">
+            </div>
+          </div>
+          <p class="text-center text-[#F2D98A] text-xs tracking-[.2em] mt-5">✦ A BEAUTIFUL NEW BEGINNING ✦</p>
+        </div>
+        <div class="details-card text-center md:text-left md:order-1">
+          <span class="inline-block rounded-full border border-[#D4AF37] px-4 py-1 text-[10px] tracking-[.22em] text-[#936B1B] font-bold mb-5">THE BRIDE</span>
+          <h2 class="serif gold-text text-3xl sm:text-4xl leading-snug mb-5" data-reveal>Gudla Vasavi</h2>
+          <div class="ornament mb-5">❖ ━━━━━ ❖</div>
+          <p class="text-sm sm:text-base leading-8 text-[#684A3C]" data-reveal>Daughter of <strong>Gudla Nageswara Rao &amp; Naga Lakshmi</strong></p>
+          <p class="text-sm leading-8 text-[#80675A] mt-4" data-reveal>Her grace, warmth, and kindness bring joy to everyone around her. She welcomes your love and blessings as two families come together.</p>
+          <div class="timer-wrap">
+            <div class="timer-track"><div class="timer-fill" id="timer2"></div></div>
+            <p class="timer-label" id="timerLabel2" aria-live="off"><span id="seconds2">20</span> seconds • <span id="timerCopy2">Moving to the groom's story</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 3: Groom. Replace the placeholder with <img src="images/groom.jpg" alt="Groom portrait"> -->
+    <section class="screen" id="page3" aria-label="The groom" aria-hidden="true" inert tabindex="-1">
+      <div class="screen-inner story-layout grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+        <div class="max-w-sm w-full mx-auto">
+          <div class="arch">
+            <div class="portrait" id="groomPortrait">
+              <div class="portrait-placeholder"><span class="emoji">🤵🏻</span><small>Groom portrait unavailable</small></div>
+              <img src="images/groom.png" alt="Groom Golla Ramakrishna in traditional wedding attire" loading="eager" decoding="async">
+            </div>
+          </div>
+          <p class="text-center text-[#F2D98A] text-xs tracking-[.2em] mt-5">✦ THE JOURNEY BEGINS ✦</p>
+        </div>
+        <div class="details-card text-center md:text-left">
+          <span class="inline-block rounded-full border border-[#D4AF37] px-4 py-1 text-[10px] tracking-[.22em] text-[#936B1B] font-bold mb-5">THE GROOM</span>
+          <h2 class="serif gold-text text-3xl sm:text-4xl leading-snug mb-5" data-reveal>Golla Ramakrishna</h2>
+          <div class="ornament mb-5">❖ ━━━━━ ❖</div>
+          <p class="text-sm sm:text-base leading-8 text-[#684A3C]" data-reveal>Son of <strong>Golla Yesubabu &amp; Satyavati</strong></p>
+          <p class="text-sm leading-8 text-[#80675A] mt-4" data-reveal>With a warm heart and a joyful spirit, he looks forward to beginning a new chapter surrounded by family, friends, and your blessings.</p>
+          <div class="timer-wrap">
+            <div class="timer-track"><div class="timer-fill" id="timer3"></div></div>
+            <p class="timer-label" id="timerLabel3" aria-live="off"><span id="seconds3">20</span> seconds • <span id="timerCopy3">Moving to wedding details</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 4: Wedding details -->
+    <section class="screen" id="page4" aria-label="Wedding details" aria-hidden="true" inert tabindex="-1">
+      <div class="screen-inner">
+        <div class="paper event-paper p-6 sm:p-10">
+          <header class="text-center mb-7">
+            <p class="eyebrow mb-2">॥ शुभ विवाह ॥</p>
+            <h2 class="serif gold-text text-2xl sm:text-4xl leading-relaxed">The Auspicious Wedding</h2>
+            <p class="ornament mt-3">✦ ❖ ✦ ❖ ✦</p>
+          </header>
+          <div class="grid lg:grid-cols-[.85fr_1.15fr] gap-7 items-center">
+            <div class="text-center">
+              <div class="arch max-w-xs mx-auto">
+                <div class="portrait" style="aspect-ratio:1.4/1;border-radius:20px;">
+                  <div class="portrait-placeholder"><span class="emoji">💑</span><small>Couple portrait unavailable</small></div>
+                  <img src="images/couple.png" alt="Gudla Vasavi and Golla Ramakrishna celebrating beneath a wedding mandap" loading="lazy" decoding="async">
+                </div>
+              </div>
+              <p class="text-[10px] tracking-[.2em] text-[#9A762C] mt-4">TWO HEARTS • ONE PROMISE</p>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <article class="info-tile sm:col-span-2 text-center">
+                <p class="eyebrow mb-2">Muhurtham • Date &amp; Time</p>
+                <h3 id="eventDate" class="serif text-xl text-[#5A1710]">Wednesday, 25 November 2026</h3>
+                <p id="eventTime" class="text-sm muted mt-1">9:30 PM</p>
+                <div class="flex justify-center gap-2 sm:gap-3 mt-4" id="countdown" aria-label="Time remaining until the wedding">
+                  <div class="count-box"><strong id="days">--</strong><span>Days</span></div>
+                  <div class="count-box"><strong id="hours">--</strong><span>Hours</span></div>
+                  <div class="count-box"><strong id="minutes">--</strong><span>Minutes</span></div>
+                  <div class="count-box"><strong id="seconds">--</strong><span>Seconds</span></div>
+                </div>
+                <p class="text-[10px] muted mt-3">Muhurtham time is shown in India Standard Time.</p>
+              </article>
+              <article class="info-tile">
+                <p class="eyebrow mb-2">Venue &amp; Place</p>
+                <h3 class="serif text-base text-[#5A1710]">Dwaraka Tirumala</h3>
+                <p class="text-xs leading-6 muted mt-2">Dwaraka Tirumala, Andhra Pradesh</p>
+                <a id="mapsLink" class="btn-gold text-xs mt-4" href="https://www.google.com/maps" target="_blank" rel="noopener">↗ Open in Google Maps</a>
+                <a id="calendarLink" class="btn-gold text-xs mt-3" href="#" target="_blank" rel="noopener">＋ Add to Google Calendar</a>
+              </article>
+              <article class="info-tile">
+                <p class="eyebrow mb-2">Wedding Lunch • 25 November</p>
+                <h3 class="serif text-base text-[#5A1710]">At Home • Gopinadhapatnam</h3>
+                <p class="text-xs leading-6 muted mt-2">Join us on Wednesday afternoon, 25 November 2026, for lunch with the family.</p>
+                <a id="lunchMapsLink" class="btn-gold text-xs mt-4" href="https://maps.app.goo.gl/WRSdkGC2mhPDMd9V7" target="_blank" rel="noopener">↗ Lunch location in Google Maps</a>
+              </article>
+            </div>
+          </div>
+          <div class="text-center mt-8">
+            <button class="btn-gold" type="button" data-goto="5">Continue to Blessings <span aria-hidden="true">✧</span></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 5: A graceful thank-you and event recap -->
+    <section class="screen" id="page5" aria-label="Thank you" aria-hidden="true" inert tabindex="-1">
+      <div class="screen-inner max-w-4xl">
+        <div class="paper closing-card p-6 sm:p-10 text-center">
+          <div class="toran text-2xl sm:text-3xl mb-4" aria-hidden="true">❀ ❁ ❀ ❁ ❀</div>
+          <p class="eyebrow mb-3">Together with our families</p>
+          <h2 class="serif gold-text text-2xl sm:text-4xl leading-relaxed">Thank You for Celebrating With Us</h2>
+          <div class="closing-photo arch" aria-hidden="true">
+            <div class="portrait">
+              <img src="images/couple.png" alt="" loading="lazy" decoding="async">
+            </div>
+          </div>
+          <p class="text-sm sm:text-base leading-7 muted max-w-2xl mx-auto mt-3">
+            Your presence and blessings will make our wedding celebrations truly special.
+            We look forward to welcoming you.
+          </p>
+
+          <div class="closing-names my-6 flex items-center justify-center gap-3 sm:gap-6">
+            <span class="serif text-lg sm:text-2xl text-[#5A1710]">Gudla Vasavi</span>
+            <span class="serif gold-text text-2xl sm:text-3xl" aria-label="and">&amp;</span>
+            <span class="serif text-lg sm:text-2xl text-[#5A1710]">Golla Ramakrishna</span>
+          </div>
+          <div class="ornament mb-6">✦ ━━━━━ ❖ ━━━━━ ✦</div>
+
+          <div class="grid sm:grid-cols-2 gap-4 text-left">
+            <article class="info-tile text-center">
+              <p class="eyebrow mb-2">Wedding Muhurtham</p>
+              <h3 id="closingEventDate" class="serif text-base sm:text-lg text-[#5A1710]">Wednesday, 25 November 2026</h3>
+              <p class="text-sm muted mt-1"><span id="closingEventTime">9:30 PM</span> IST</p>
+              <p class="text-sm text-[#684A3C] mt-3">Dwaraka Tirumala, Andhra Pradesh</p>
+              <a id="closingWeddingMap" class="btn-gold text-xs mt-4" href="https://share.google/h0EywuwyLOZexLkQ1" target="_blank" rel="noopener">↗ Wedding location</a>
+            </article>
+            <article class="info-tile text-center">
+              <p class="eyebrow mb-2">Wedding Lunch • Afternoon</p>
+              <h3 id="closingLunchDate" class="serif text-base sm:text-lg text-[#5A1710]">Wednesday, 25 November 2026</h3>
+              <p class="text-sm muted mt-1">At home with the family</p>
+              <p class="text-sm text-[#684A3C] mt-3">Gopinadhapatnam</p>
+              <a id="closingLunchMap" class="btn-gold text-xs mt-4" href="https://maps.app.goo.gl/WRSdkGC2mhPDMd9V7" target="_blank" rel="noopener">↗ Lunch location</a>
+            </article>
+          </div>
+
+          <p class="text-sm text-[#684A3C] mt-6">With love and gratitude,<br><strong>Gudla's Family</strong></p>
+          <div class="closing-actions mt-5 flex flex-wrap items-center justify-center gap-3">
+            <a id="shareLink" class="btn-gold" target="_blank" rel="noopener">Share via WhatsApp</a>
+            <button class="btn-outline !text-[#805E25] !bg-transparent" type="button" data-goto="4">← Wedding Details</button>
+            <button id="replayBtn" class="btn-outline !text-[#805E25] !bg-transparent" type="button">↺ Replay Invitation</button>
+          </div>
+          <p class="text-[10px] tracking-[.18em] uppercase text-[#A18448] mt-5">May your presence grace our celebration</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Navigation is deliberately unobtrusive; keyboard arrows also work. -->
+  <nav class="controls hide" id="pageControls" aria-label="Invitation navigation">
+    <button id="prevBtn" class="btn-outline" type="button" aria-label="Previous page">← <span class="hidden sm:inline">Previous</span></button>
+    <button id="playBtn" class="btn-outline" type="button" aria-label="Pause automatic page advance" aria-pressed="false">Ⅱ <span class="hidden sm:inline">Pause</span></button>
+    <button id="nextBtn" class="btn-outline" type="button" aria-label="Next page"><span class="hidden sm:inline">Next</span> →</button>
+  </nav>
+  <button id="musicBtn" class="music-control" type="button" aria-label="Play wedding music" aria-pressed="false" title="Play wedding music (add a licensed MP3 file to enable audio)">♪</button>
+  <span id="musicStatus" class="sr-only" role="status" aria-live="polite"></span>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
